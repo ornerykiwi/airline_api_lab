@@ -9,7 +9,9 @@ import com.example.airline_api.services.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
@@ -20,6 +22,8 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     BookingRepository bookingRepository;
+
+    @Autowired
 
     public DataLoader() {
     }
@@ -44,8 +48,11 @@ public class DataLoader implements ApplicationRunner {
 
         //bookings
         Booking booking = new Booking(miami, charisma, 12);
+        bookingRepository.save(booking);
         Booking booking1 = new Booking(hawaii, robbie, 1);
+        bookingRepository.save(booking1);
         Booking booking2 = new Booking(singapore, dan, 38);
+        bookingRepository.save(booking2);
 
 
 
