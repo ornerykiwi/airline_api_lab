@@ -1,0 +1,78 @@
+package com.example.airline_api.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonTypeResolver;
+import jakarta.persistence.*;
+
+import java.awt.print.Book;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "passengers")
+public class Passenger {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private long id;
+
+    @Column
+    private String name;
+
+    @Column
+    private String email;
+
+    @OneToMany(mappedBy = "passenger")
+    @JsonIgnoreProperties({"passenger"})
+    private List<Booking> bookings;
+
+    public Passenger(String name, String email) {
+        this.name = name;
+        this.email = email;
+        this.bookings = new ArrayList<>();
+    }
+
+    public Passenger() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public void addBooking(Booking booking){
+        this.bookings.add(booking);
+    }
+
+    public void removeBooking(Booking booking){
+        this.bookings.remove(booking);
+    }
+}
