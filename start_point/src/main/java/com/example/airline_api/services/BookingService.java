@@ -32,7 +32,7 @@ public class BookingService {
     }
 
 //    booking a passenger onto a flight, reducing the capacity
-    public Booking saveBooking(BookingDTO bookingDTO){
+    public Booking saveBooking(BookingDTO bookingDTO, Long id){
         Passenger passenger = passengerService.findSinglePassenger(bookingDTO.getPassengerId()).get();
         Flight flight = flightService.findSingleFlight(bookingDTO.getFlightId()).get();
         Booking booking = new Booking(
