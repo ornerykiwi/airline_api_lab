@@ -14,12 +14,12 @@ public class Booking {
 
 //    setting up the foreign keys
     @ManyToOne
-    @JoinColumn(name = "passenger_id")
+    @JoinColumn(name = "passenger_id", nullable = false)
     @JsonIgnoreProperties({"bookings"})
     private Passenger passenger;
 
     @ManyToOne
-    @JoinColumn(name = "flight_id")
+    @JoinColumn(name = "flight_id", nullable = false)
     @JsonIgnoreProperties({"bookings"})
     private Flight flight;
 

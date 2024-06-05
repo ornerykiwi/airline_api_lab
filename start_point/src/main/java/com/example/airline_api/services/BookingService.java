@@ -41,7 +41,7 @@ public class BookingService {
                 bookingDTO.getSeatNumber()
         );
         flight.setCapacity(flight.getCapacity() - 1);
-        return booking;
+        return bookingRepository.save(booking);
     }
 
 
