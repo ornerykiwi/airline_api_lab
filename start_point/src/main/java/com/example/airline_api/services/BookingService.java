@@ -31,6 +31,7 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
+//    booking a passenger onto a flight, reducing the capacity
     public Booking saveBooking(BookingDTO bookingDTO){
         Passenger passenger = passengerService.findSinglePassenger(bookingDTO.getPassengerId()).get();
         Flight flight = flightService.findSingleFlight(bookingDTO.getFlightId()).get();
